@@ -2,8 +2,9 @@
   text-align: center;
 }
 
-.logo {
-  height: 200px;
+.logo img {
+  height: 100px;
+  padding: 20px 30px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
