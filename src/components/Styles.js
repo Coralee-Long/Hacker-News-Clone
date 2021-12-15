@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
 
   toolBar: {
     justifyContent: "space-between",
+    padding: "0 50px",
   },
 
   card: {
@@ -27,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   imgClass: {
-    height: "100px",
+    height: "80px",
+    padding: "0 10px 0 0",
   },
 
   inputField: {
