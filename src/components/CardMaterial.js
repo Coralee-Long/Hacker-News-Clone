@@ -25,6 +25,7 @@ export default function BasicCard({
 }) {
   const newsApiDate = created_at;
   const timestamp = new Date(newsApiDate).getTime();
+  console.log(timestamp); // 1639484238000
   const Day = new Date(timestamp).getDate();
   const Month = new Date(timestamp).getMonth() + 1;
   const Year = new Date(timestamp).getFullYear();

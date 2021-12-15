@@ -6,16 +6,16 @@ import logo from "./img/HN-logo.png";
 import { Toolbar, AppBar, Typography, Container } from "@material-ui/core";
 import useStyles from "./components/Styles";
 import Button from "@mui/material/Button";
-import { borderColor } from "@mui/system";
 import SearchIcon from "@mui/icons-material/Search";
-//import PaginationNews from './components/PaginationNews'
 import Pagination from "@mui/material/Pagination";
+import CircularProgressWithLabel from "./components/Circular";
 
 const App = () => {
   const classes = useStyles();
-
+  // const [progress, setProgress] = useState(10);
   const [news, setNews] = useState([]); // Set up "useState" for news
   const [page, setPage] = useState(1); // set up "useState" for page
+  const [loading, setLoading] = useState(false); //set up spinner for "loading" page
   const itemsPerPage = 5; //set how many items should be displayed per page
   const [noOfPages, setNoOfPages] = useState(0); //set up "useState" for noOfPages
   const URL = `http://hn.algolia.com/api/v1/search?tags=front_page`; // API URL
@@ -24,16 +24,17 @@ const App = () => {
   //get method is used to fetch data from given url
   const fetchData = async () => {
     await axios
-
       .get(URL)
       .then((res) => {
         console.log(res.data.hits);
         //set the news
         setNews(res.data.hits);
+        setLoading(true);
         //set no of pages to be displayed
-        //if itemsPerPage = 5 and lenght of returned data is 20
+        //if itemsPerPage = 5 and length of returned data is 20
         //no of pages will be 20/5...so it will show 4 pages
         setNoOfPages(Math.ceil(res.data.hits.length / itemsPerPage));
+        console.log(noOfPages);
       })
       .catch((err) => console.log(err));
   };
@@ -54,7 +55,11 @@ const App = () => {
       <AppBar position="relative">
         <Toolbar className={classes.toolBar}>
           <div className={classes.imgWrapper}>
-            <img src={logo} className={classes.imgClass} />
+            <img
+              src={logo}
+              className={classes.imgClass}
+              alt="Hacker News Logo"
+            />
             <Typography variant="h4">Hacker News</Typography>
           </div>
           <form>
@@ -78,31 +83,38 @@ const App = () => {
       </AppBar>
       <main>
         <div className={classes.container}>
-          <Container maxWidth="lg">
-            {news
-              .slice((page - 1) * itemsPerPage, page * itemsPerPage)
-              .map((item) => (
-                <div className={classes.card}>
-                  <BasicCard
-                    {...item}
-                    key={item.objectID}
-                    className={classes.card}
-                  />
-                </div>
-              ))}
-          </Container>
+          {loading ? (
+            <div>
+              <Container maxWidth="lg">
+                {news
+                  .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+                  .map((item) => (
+                    <div className={classes.card}>
+                      <BasicCard
+                        {...item}
+                        key={item.objectID}
+                        className={classes.card}
+                      />
+                    </div>
+                  ))}
+              </Container>
+              <div className={classes.paginationContainer}>
+                <Pagination
+                  count={noOfPages}
+                  page={page}
+                  defaultPage={1}
+                  onChange={handlePageChange}
+                  color="secondary"
+                  size="large"
+                  shape="rounded"
+                />
+              </div>
+            </div>
+          ) : (
+            <CircularProgressWithLabel />
+          )}
         </div>
       </main>
-
-      <Pagination
-        count={noOfPages}
-        page={page}
-        onChange={handlePageChange}
-        defaultPage={1}
-        color="secondary"
-        size="large"
-        shape="rounded"
-      />
     </div>
   );
 };

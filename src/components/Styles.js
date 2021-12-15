@@ -46,6 +46,12 @@ const useStyles = makeStyles((theme) => ({
     height: "35px",
     opacity: "0.7",
   },
+
+  paginationContainer: {
+    display: "flex",
+    justifyContent: "center",
+    paddingTop: "30px",
+  },
 }));
 
 export default useStyles;
