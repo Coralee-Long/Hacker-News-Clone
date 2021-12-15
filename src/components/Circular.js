@@ -4,11 +4,19 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useState } from "react";
+import useStyles from "./Styles";
 
 function CircularProgressWithLabel(props) {
+  const classes = useStyles();
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
-      <CircularProgress variant="determinate" {...props} />
+      <CircularProgress
+        className={classes.spinnerColor}
+        variant="determinate"
+        {...props}
+        size="10rem"
+        // color="secondary"
+      />
       <Box
         sx={{
           top: 0,
@@ -19,6 +27,8 @@ function CircularProgressWithLabel(props) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          // size: "10rem",
+          thickness: "5",
         }}
       >
         <Typography variant="caption" component="div" color="text.secondary">

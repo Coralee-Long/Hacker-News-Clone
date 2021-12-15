@@ -21,26 +21,26 @@ const App = () => {
   const [query, setQuery] = useState(""); //set up "useState" for query
   const [search, setSearch] = useState("");
   const URL = `http://hn.algolia.com/api/v1/search?tags=front_page`; // API URL
-  const searchURL = `http://hn.algolia.com/api/v1/search?query=${query}`; //search URL
+  const searchURL = `http://hn.algolia.com/api/v1/search?query=${search}`; //search URL
 
   //fetch API data
   //get method is used to fetch data from given url
   const fetchData = async (url) => {
-    //console.log("Our URL:" + url);
+    console.log("Our URL" + url);
     await axios
       .get(url)
       .then((res) => {
+        console.log(res.data.hits);
         //set the news
         setNews(res.data.hits);
         //set no of pages to be displayed
         //if itemsPerPage = 5 and length of returned data is 20
         //no of pages will be 20/5...so it will show 4 pages
         setNoOfPages(Math.ceil(res.data.hits.length / itemsPerPage));
-        // if (res.data.hits.length > 0) {
         setLoading(true);
-        // }
+        console.log(noOfPages);
       })
-      .catch((err) => alert(`Error at server side....Please try again${err}`));
+      .catch((err) => console.log(err));
   };
 
   //call fetch API data using useEffect
@@ -49,22 +49,18 @@ const App = () => {
     fetchData(URL);
   }, []);
 
-  useEffect(() => {
-    fetchData(searchURL);
-  }, [query]);
-
   //handle page change event
   const handlePageChange = (event, value) => {
     setPage(value);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setSearch(query);
-  //   console.log("Search URL" + searchURL);
-  //   console.log("Query" + query);
-  //   // setQuery("");
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearch(query);
+    console.log(query);
+    fetchData(searchURL);
+    setQuery("");
+  };
 
   return (
     <div>
@@ -78,7 +74,7 @@ const App = () => {
             />
             <Typography variant="h4">Hacker News</Typography>
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -87,7 +83,7 @@ const App = () => {
               placeholder=" Search…"
               name="txtSearch"
             />
-            {/* <Button
+            <Button
               type="submit"
               variant="outlined"
               className={classes.searchButton}
@@ -96,7 +92,7 @@ const App = () => {
               startIcon={<SearchIcon />}
             >
               Search
-            </Button> */}
+            </Button>
           </form>
         </Toolbar>
       </AppBar>
@@ -122,7 +118,7 @@ const App = () => {
                   className={classes.pagStyle}
                   count={noOfPages}
                   page={page}
-                  defaultPage={0}
+                  defaultPage={1}
                   onChange={handlePageChange}
                   size="large"
                   shape="rounded"
