@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import App from "../App";
+import useStyles from "./Styles";
+import logo from "../img/HN-logo.png";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -51,35 +54,42 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar({ query, setQuery }) {
+  const classes = useStyles();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+        <Toolbar className={classes.searchAppBar}>
+          <div className={classes.imgWrapper}>
+            <img
+              src={logo}
+              className={classes.imgClass}
+              alt="Hacker News Logo"
+            />
+          </div>
           <Typography
-            variant="h6"
+            variant="h4"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Hacker News
           </Typography>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              query={query}
+              setQuery={setQuery}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              type="text"
+              className={classes.inputField}
+              placeholder=" Search…"
+              name="txtSearch"
             />
           </Search>
         </Toolbar>

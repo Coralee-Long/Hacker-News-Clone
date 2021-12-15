@@ -11,10 +11,10 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
 
-  toolBar: {
-    justifyContent: "space-between",
-    padding: "0 50px",
-  },
+  // toolBar: {
+  //   justifyContent: "space-between",
+  //   padding: "0 50px",
+  // },
 
   card: {
     padding: "20px",
@@ -36,18 +36,18 @@ const useStyles = makeStyles((theme) => ({
   },
 
   imgClass: {
-    height: "80px",
+    height: "70px",
     padding: "0 10px 0 0",
   },
 
-  inputField: {
-    height: "30px",
-    width: "250px",
-    opacity: "0.8",
-    marginRight: "10px",
-    borderRadius: "3px",
-    border: "1px solid #ffffff",
-  },
+  // inputField: {
+  //   height: "30px",
+  //   width: "250px",
+  //   opacity: "0.8",
+  //   marginRight: "10px",
+  //   borderRadius: "3px",
+  //   border: "1px solid #ffffff",
+  // },
 
   searchButton: {
     color: "#fff",
@@ -75,16 +75,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#F9A620",
   },
 
-  // pagStyle ul: {
-  //   backgroundcolor: "#F9A620 !important",
-  // },
-
-  // "MuiPaginationItem-root": {
-  //   color: "#fff",
-  // },
-
   spinnerColor: {
     color: "#F9A620 !important",
+  },
+
+  searchAppBar: {
+    // backgroundColor: "#F9A620",
+    backgroundColor: "#F9A620",
+    // color: "red",
   },
 }));
 

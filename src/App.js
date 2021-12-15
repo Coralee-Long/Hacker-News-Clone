@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import Pagination from "@mui/material/Pagination";
 import CircularProgressWithLabel from "./components/Circular";
+import SearchAppBar from "./components/SearchAppBar";
 
 const App = () => {
   const classes = useStyles();
@@ -27,20 +28,18 @@ const App = () => {
   //get method is used to fetch data from given url
   const fetchData = async (url) => {
     //console.log("Our URL:" + url);
-    await axios
-      .get(url)
-      .then((res) => {
-        //set the news
-        setNews(res.data.hits);
-        //set no of pages to be displayed
-        //if itemsPerPage = 5 and length of returned data is 20
-        //no of pages will be 20/5...so it will show 4 pages
-        setNoOfPages(Math.ceil(res.data.hits.length / itemsPerPage));
-        // if (res.data.hits.length > 0) {
-        setLoading(true);
-        // }
-      })
-      .catch((err) => alert(`Error at server side....Please try again${err}`));
+    await axios.get(url).then((res) => {
+      //set the news
+      setNews(res.data.hits);
+      //set no of pages to be displayed
+      //if itemsPerPage = 5 and length of returned data is 20
+      //no of pages will be 20/5...so it will show 4 pages
+      setNoOfPages(Math.ceil(res.data.hits.length / itemsPerPage));
+      // if (res.data.hits.length > 0) {
+      setLoading(true);
+      // }
+    });
+    // .catch((err) => alert(`Error at server side....Please try again${err}`));
   };
 
   //call fetch API data using useEffect
@@ -68,38 +67,16 @@ const App = () => {
 
   return (
     <div>
-      <AppBar position="relative" className={classes.appBar}>
-        <Toolbar className={classes.toolBar}>
-          <div className={classes.imgWrapper}>
-            <img
-              src={logo}
-              className={classes.imgClass}
-              alt="Hacker News Logo"
-            />
-            <Typography variant="h4">Hacker News</Typography>
-          </div>
-          <form>
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              type="text"
-              className={classes.inputField}
-              placeholder=" Search…"
-              name="txtSearch"
-            />
-            {/* <Button
-              type="submit"
-              variant="outlined"
-              className={classes.searchButton}
-              size="medium"
-              style={{ color: "#FFFFFF", borderColor: "#FFFFFF" }}
-              startIcon={<SearchIcon />}
-            >
-              Search
-            </Button> */}
-          </form>
-        </Toolbar>
-      </AppBar>
+      <SearchAppBar
+        query={query}
+        setQuery={setQuery}
+        // value={query}
+        // onChange={(e) => setQuery(e.target.value)}
+        // type="text"
+        // className={classes.inputField}
+        // placeholder=" Search…"
+        // name="txtSearch"
+      ></SearchAppBar>
       <main>
         <div className={classes.container}>
           {loading ? (
@@ -119,6 +96,9 @@ const App = () => {
               </Container>
               <div className={classes.paginationContainer}>
                 <Pagination
+                  hidePrevButton
+                  hideNextButton
+                  paging={false}
                   className={classes.pagStyle}
                   count={noOfPages}
                   page={page}
