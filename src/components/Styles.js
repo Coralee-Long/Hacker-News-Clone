@@ -3,30 +3,70 @@ import { NoEncryptionTwoTone } from "@mui/icons-material";
 import { findByLabelText } from "@testing-library/react";
 import { pink } from "@material-ui/core/colors";
 import { ListItemSecondaryAction } from "@material-ui/core";
+import { purple } from "@mui/material/colors";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(4, 0, 8, 0),
-    height: "100%",
+  ul: {
+    "& .MuiPaginationItem-root": {
+      color: "#dad7cd",
+      backgroundColor: "rgba(39, 41, 61, 0.8)",
+    },
   },
 
+  mainAppContainer: {
+    height: "100vh !important",
+    backgroundColor: "rgba(28, 29, 39, 1)",
+  },
+
+  wrapper: {
+    backgroundColor: "rgba(28, 29, 39, 1)",
+    height: "100vh !important",
+  },
   // toolBar: {
   //   justifyContent: "space-between",
   //   padding: "0 50px",
   // },
 
   card: {
-    padding: "20px",
+    padding: "15px",
+    backgroundColor: "rgba(28, 29, 39, 1)",
   },
+
+  cardMain: {
+    borderRadius: "15px !important",
+    backgroundColor: "rgba(39, 41, 61, 0.9) !important",
+    padding: "0 10px",
+  },
+
+  // cardStyling: {
+  //   backgroundColor: "rgba(39, 41, 61, 0.9)",
+  // },
 
   title_href: {
     textDecoration: "none",
-    color: "rgba(0,0,0,0.87)",
+    color: "#dad7cd",
   },
 
   authorStyle: {
-    color: "#fb8500",
+    color: "#f08080",
+    paddingTop: "10px",
+  },
+
+  timeStyle: {
+    color: "#9a8c98",
+    paddingBottom: "10px",
+    paddingTop: "5px",
+    // textAlign: "right",
+  },
+
+  commentsStyle: {
+    color: "#ffb4a2",
+    paddingTop: "20px",
+    paddingRight: "30px",
+  },
+
+  bottomText: {
+    display: "flex",
   },
 
   imgWrapper: {
@@ -50,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
   // },
 
   searchButton: {
-    color: "#fff",
+    color: "##dad7cd",
     height: "35px",
     opacity: "0.7",
   },
@@ -68,21 +108,23 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     minHeight: "400px",
     // backgroundColor: "#A8D5E2",
-    marginTop: "30%",
+    marginTop: "40%",
   },
 
-  appBar: {
-    backgroundColor: "#F9A620",
-  },
+  // appBar: {
+  //   backgroundColor: "#F9A620",
+  // },
 
   spinnerColor: {
-    color: "#F9A620 !important",
+    color: "#f08080 !important",
   },
 
   searchAppBar: {
     // backgroundColor: "#F9A620",
-    backgroundColor: "#F9A620",
-    // color: "red",
+    backgroundColor: "rgba(39, 41, 61, 1)",
+    color: "#dad7cd",
+    paddingRight: "70px !important",
+    paddingLeft: "70px !important",
   },
 }));
 

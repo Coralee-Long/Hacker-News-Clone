@@ -17,7 +17,7 @@ const App = () => {
   const [news, setNews] = useState([]); // Set up "useState" for news
   const [page, setPage] = useState(1); // set up "useState" for page
   const [loading, setLoading] = useState(false); //set up spinner for "loading" page
-  const itemsPerPage = 6; //set how many items should be displayed per page
+  const itemsPerPage = 7; //set how many items should be displayed per page
   const [noOfPages, setNoOfPages] = useState(0); //set up "useState" for noOfPages
   const [query, setQuery] = useState(""); //set up "useState" for query
   const [search, setSearch] = useState("");
@@ -66,56 +66,48 @@ const App = () => {
   // };
 
   return (
-    <div>
-      <SearchAppBar
-        query={query}
-        setQuery={setQuery}
-        // value={query}
-        // onChange={(e) => setQuery(e.target.value)}
-        // type="text"
-        // className={classes.inputField}
-        // placeholder=" Search…"
-        // name="txtSearch"
-      ></SearchAppBar>
+    <div className={classes.mainAppContainer}>
+      <SearchAppBar query={query} setQuery={setQuery}></SearchAppBar>
       <main>
-        <div className={classes.container}>
-          {loading ? (
-            <div>
-              <Container maxWidth="lg">
-                {news
-                  .slice((page - 1) * itemsPerPage, page * itemsPerPage)
-                  .map((item) => (
-                    <div className={classes.card}>
-                      <BasicCard
-                        {...item}
-                        key={item.objectID}
-                        className={classes.card}
-                      />
-                    </div>
-                  ))}
-              </Container>
-              <div className={classes.paginationContainer}>
-                <Pagination
-                  hidePrevButton
-                  hideNextButton
-                  paging={false}
-                  className={classes.pagStyle}
-                  count={noOfPages}
-                  page={page}
-                  defaultPage={0}
-                  onChange={handlePageChange}
-                  size="large"
-                  shape="rounded"
-                  color="standard"
-                />
-              </div>
+        {loading ? (
+          <div className={classes.wrapper}>
+            <Container
+              maxWidth="md"
+              style={{
+                paddingTop: "30px",
+              }}
+            >
+              {news
+                .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+                .map((item) => (
+                  <div className={classes.card}>
+                    <BasicCard {...item} key={item.objectID} />
+                  </div>
+                ))}
+            </Container>
+            <div className={classes.paginationContainer}>
+              <Pagination
+                classes={{ ul: classes.ul }}
+                hidePrevButton
+                hideNextButton
+                paging={false}
+                className={classes.pagStyle}
+                count={noOfPages}
+                page={page}
+                defaultPage={0}
+                onChange={handlePageChange}
+                size="large"
+                shape="rounded"
+                // color="standard"
+                // variant="outlined"
+              />
             </div>
-          ) : (
-            <div className={classes.spinner}>
-              <CircularProgressWithLabel />
-            </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className={classes.spinner}>
+            <CircularProgressWithLabel />
+          </div>
+        )}
       </main>
     </div>
   );
