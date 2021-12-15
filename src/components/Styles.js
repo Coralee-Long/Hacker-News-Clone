@@ -3,6 +3,7 @@ import { NoEncryptionTwoTone } from "@mui/icons-material";
 import { findByLabelText } from "@testing-library/react";
 import { pink } from "@material-ui/core/colors";
 import { ListItemSecondaryAction } from "@material-ui/core";
+import { fontSize } from "@mui/system";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -79,12 +80,30 @@ const useStyles = makeStyles((theme) => ({
   //   backgroundcolor: "#F9A620 !important",
   // },
 
-  // "MuiPaginationItem-root": {
-  //   color: "#fff",
+  //change color of pagination
+  ul: {
+    "& .MuiPaginationItem-root": {
+      backgroundColor: "#fab84d",
+
+    }
+  },
+
+  // root: {
+  //   '& .Mui-selected': {
+  //     backgroundColor: 'transparent',
+  //     color: '#19D5C6',
+  //   }
   // },
 
   spinnerColor: {
     color: "#F9A620 !important",
+  },
+
+  noRecordsContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: '2rem',
   },
 }));
 

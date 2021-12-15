@@ -38,9 +38,9 @@ const App = () => {
         setNoOfPages(Math.ceil(res.data.hits.length / itemsPerPage));
         // if (res.data.hits.length > 0) {
         setLoading(true);
-        // }
+        //}       
       })
-      .catch((err) => alert(`Error at server side....Please try again${err}`));
+      .catch((err) => alert(`Error at server side....Please try again - ${err}`));
   };
 
   //call fetch API data using useEffect
@@ -102,7 +102,7 @@ const App = () => {
       </AppBar>
       <main>
         <div className={classes.container}>
-          {loading ? (
+          {(loading && noOfPages >= 1) ? (
             <div>
               <Container maxWidth="lg">
                 {news
@@ -119,7 +119,7 @@ const App = () => {
               </Container>
               <div className={classes.paginationContainer}>
                 <Pagination
-                  className={classes.pagStyle}
+                  className={classes.ul}
                   count={noOfPages}
                   page={page}
                   defaultPage={0}
@@ -127,17 +127,25 @@ const App = () => {
                   size="large"
                   shape="rounded"
                   color="standard"
+                  hideNextButton={noOfPages <= 1 ? true : false}
+                  hidePrevButton={noOfPages <= 1 ? true : false}
                 />
               </div>
             </div>
-          ) : (
-            <div className={classes.spinner}>
-              <CircularProgressWithLabel />
-            </div>
-          )}
+          ) :
+            (loading && noOfPages <= 0) ?
+              (
+                <div className={classes.noRecordsContainer}>No Records Found</div>
+              )
+              :
+              (
+                <div className={classes.spinner}>
+                  <CircularProgressWithLabel />
+                </div>
+              )}
         </div>
-      </main>
-    </div>
+      </main >
+    </div >
   );
 };
 
