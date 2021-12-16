@@ -40,10 +40,11 @@ const App = () => {
         setNoOfPages(Math.ceil(res.data.hits.length / itemsPerPage));
         // if (res.data.hits.length > 0) {
         setLoading(true);
-        //}       
+        //}
       })
-      .catch((err) => alert(`Error at server side....Please try again - ${err}`));
-
+      .catch((err) =>
+        alert(`Error at server side....Please try again - ${err}`)
+      );
   };
 
   //call fetch API data using useEffect
@@ -76,9 +77,9 @@ const App = () => {
         {loading && noOfPages >= 1 ? (
           <div className={classes.wrapper}>
             <Container
-              maxWidth="md"
+              maxWidth="lg"
               style={{
-                paddingTop: "30px",
+                paddingTop: "1.5rem",
               }}
             >
               {news

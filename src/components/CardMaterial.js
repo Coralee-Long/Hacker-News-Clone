@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import useStyles from "./Styles";
 import { mapTime } from "./MapTime";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 const bull = (
   <Box
@@ -59,6 +61,14 @@ export default function BasicCard({
           POSTED BY: {author}
         </Typography>
         <div className={classes.bottomText}>
+          <CardActions className={classes.likeButtonGroup}>
+            <Button size="small" className={classes.likeButton}>
+              <ThumbUpIcon className={classes.like} />
+            </Button>
+            <Button size="small" className={classes.likeButton}>
+              <ThumbDownIcon className={classes.like} />
+            </Button>
+          </CardActions>
           <Typography variant="body2" className={classes.commentsStyle}>
             POINTS: {points}
           </Typography>
@@ -67,9 +77,6 @@ export default function BasicCard({
           </Typography>
         </div>
       </CardContent>
-      {/* <CardActions>
-        <Button size="small">Join the Discussion</Button>
-      </CardActions> */}
     </Card>
   );
 }

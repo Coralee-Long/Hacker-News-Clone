@@ -9,7 +9,10 @@ const useStyles = makeStyles((theme) => ({
   ul: {
     "& .MuiPaginationItem-root": {
       color: "#dad7cd",
+      fontSize: "18px",
       backgroundColor: "rgba(39, 41, 61, 0.8)",
+      padding: "25px",
+      margin: "5px",
     },
   },
 
@@ -28,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(28, 29, 39, 1)",
   },
 
+  cardStyling: {
+    padding: "20px 10px 15px 20px !important",
+  },
+
   cardMain: {
     borderRadius: "15px !important",
     backgroundColor: "rgba(39, 41, 61, 0.9) !important",
@@ -42,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
   authorStyle: {
     color: "#f08080",
     paddingTop: "10px",
+    paddingBottom: "20px",
   },
 
   timeStyle: {
@@ -53,11 +61,25 @@ const useStyles = makeStyles((theme) => ({
   commentsStyle: {
     color: "#ffb4a2",
     paddingTop: "20px",
-    paddingRight: "30px",
+    paddingRight: "15px",
+    paddingLeft: "10px",
   },
 
   bottomText: {
     display: "flex",
+  },
+
+  like: {
+    color: "#ffb4a2",
+    opacity: "0.8",
+  },
+
+  likeButton: {
+    margin: "0 !important",
+  },
+
+  likeButtonGroup: {
+    paddingBottom: "0",
   },
 
   imgWrapper: {
@@ -98,8 +120,10 @@ const useStyles = makeStyles((theme) => ({
   searchAppBar: {
     backgroundColor: "rgba(39, 41, 61, 1)",
     color: "#dad7cd",
-    paddingRight: "70px !important",
-    paddingLeft: "70px !important",
+    paddingRight: "8% !important",
+    paddingLeft: "8% !important",
+    paddingTop: "15px",
+    paddingBottom: "15px",
   },
 
   noRecordsContainer: {
