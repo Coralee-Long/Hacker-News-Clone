@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   mainAppContainer: {
-    height: "100vh !important",
+    // height: "100vh !important",
     backgroundColor: "rgba(28, 29, 39, 1)",
   },
 
@@ -22,10 +22,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(28, 29, 39, 1)",
     height: "100vh !important",
   },
-  // toolBar: {
-  //   justifyContent: "space-between",
-  //   padding: "0 50px",
-  // },
 
   card: {
     padding: "15px",
@@ -37,10 +33,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(39, 41, 61, 0.9) !important",
     padding: "0 10px",
   },
-
-  // cardStyling: {
-  //   backgroundColor: "rgba(39, 41, 61, 0.9)",
-  // },
 
   title_href: {
     textDecoration: "none",
@@ -56,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#9a8c98",
     paddingBottom: "10px",
     paddingTop: "5px",
-    // textAlign: "right",
   },
 
   commentsStyle: {
@@ -80,15 +71,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 10px 0 0",
   },
 
-  // inputField: {
-  //   height: "30px",
-  //   width: "250px",
-  //   opacity: "0.8",
-  //   marginRight: "10px",
-  //   borderRadius: "3px",
-  //   border: "1px solid #ffffff",
-  // },
-
   searchButton: {
     color: "##dad7cd",
     height: "35px",
@@ -105,26 +87,29 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: "100%",
-    minHeight: "400px",
-    // backgroundColor: "#A8D5E2",
-    marginTop: "40%",
+    height: "100vh",
+    // marginTop: "40%",
   },
-
-  // appBar: {
-  //   backgroundColor: "#F9A620",
-  // },
 
   spinnerColor: {
     color: "#f08080 !important",
   },
 
   searchAppBar: {
-    // backgroundColor: "#F9A620",
     backgroundColor: "rgba(39, 41, 61, 1)",
     color: "#dad7cd",
     paddingRight: "70px !important",
     paddingLeft: "70px !important",
+  },
+
+  noRecordsContainer: {
+    height: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "2rem",
+    backgroundColor: "rgba(28, 29, 39, 1)",
+    color: "#dad7cd",
   },
 }));
 

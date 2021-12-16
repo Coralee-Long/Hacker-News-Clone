@@ -28,18 +28,22 @@ const App = () => {
   //get method is used to fetch data from given url
   const fetchData = async (url) => {
     //console.log("Our URL:" + url);
-    await axios.get(url).then((res) => {
-      //set the news
-      setNews(res.data.hits);
-      //set no of pages to be displayed
-      //if itemsPerPage = 5 and length of returned data is 20
-      //no of pages will be 20/5...so it will show 4 pages
-      setNoOfPages(Math.ceil(res.data.hits.length / itemsPerPage));
-      // if (res.data.hits.length > 0) {
-      setLoading(true);
-      // }
-    });
-    // .catch((err) => alert(`Error at server side....Please try again${err}`));
+
+    await axios
+      .get(url)
+      .then((res) => {
+        //set the news
+        setNews(res.data.hits);
+        //set no of pages to be displayed
+        //if itemsPerPage = 5 and length of returned data is 20
+        //no of pages will be 20/5...so it will show 4 pages
+        setNoOfPages(Math.ceil(res.data.hits.length / itemsPerPage));
+        // if (res.data.hits.length > 0) {
+        setLoading(true);
+        //}       
+      })
+      .catch((err) => alert(`Error at server side....Please try again - ${err}`));
+
   };
 
   //call fetch API data using useEffect
@@ -68,8 +72,8 @@ const App = () => {
   return (
     <div className={classes.mainAppContainer}>
       <SearchAppBar query={query} setQuery={setQuery}></SearchAppBar>
-      <main>
-        {loading ? (
+      <main className={classes.main}>
+        {loading && noOfPages >= 1 ? (
           <div className={classes.wrapper}>
             <Container
               maxWidth="md"
@@ -88,8 +92,6 @@ const App = () => {
             <div className={classes.paginationContainer}>
               <Pagination
                 classes={{ ul: classes.ul }}
-                hidePrevButton
-                hideNextButton
                 paging={false}
                 className={classes.pagStyle}
                 count={noOfPages}
@@ -98,11 +100,13 @@ const App = () => {
                 onChange={handlePageChange}
                 size="large"
                 shape="rounded"
-                // color="standard"
-                // variant="outlined"
+                hideNextButton={noOfPages <= 1 ? true : false}
+                hidePrevButton={noOfPages <= 1 ? true : false}
               />
             </div>
           </div>
+        ) : loading && noOfPages <= 0 ? (
+          <div className={classes.noRecordsContainer}>No Records Found</div>
         ) : (
           <div className={classes.spinner}>
             <CircularProgressWithLabel />
