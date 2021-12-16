@@ -11,7 +11,11 @@ import { mapTime } from "./MapTime";
 const bull = (
   <Box
     component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+    sx={{
+      display: "inline-block",
+      mx: "2px",
+      transform: "scale(0.8)",
+    }}
   >
     •
   </Box>
@@ -24,6 +28,7 @@ export default function BasicCard({
   num_comments,
   created_at,
   created_at_i,
+  points,
 }) {
   // const newsApiDate = created_at;
   // const timestamp = new Date(newsApiDate).getTime();
@@ -36,9 +41,13 @@ export default function BasicCard({
   const classes = useStyles();
 
   return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+    <Card sx={{ minWidth: 275 }} raised={true} className={classes.cardMain}>
+      <CardContent className={classes.cardStyling}>
+        <Typography
+          sx={{ fontSize: 14 }}
+          className={classes.timeStyle}
+          gutterBottom
+        >
           {mapTime(created_at_i)} ago
         </Typography>
         <Typography variant="h5" component="div">
@@ -47,9 +56,16 @@ export default function BasicCard({
           </a>
         </Typography>
         <Typography sx={{ mb: 1.5 }} className={classes.authorStyle}>
-          by: {author}
+          POSTED BY: {author}
         </Typography>
-        <Typography variant="body2">Comments: {num_comments}</Typography>
+        <div className={classes.bottomText}>
+          <Typography variant="body2" className={classes.commentsStyle}>
+            POINTS: {points}
+          </Typography>
+          <Typography variant="body2" className={classes.commentsStyle}>
+            COMMENTS: {num_comments}
+          </Typography>
+        </div>
       </CardContent>
       {/* <CardActions>
         <Button size="small">Join the Discussion</Button>

@@ -1,3 +1,16 @@
+.body {
+  background-color: rgba(28, 29, 39, 1) !important;
+}
+
+/* .main {
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding-top: 30px;
+  background-color: pink;
+} */
+
 .App {
   text-align: center;
 }
@@ -35,8 +48,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.main {
-  height: 100vh;
 }

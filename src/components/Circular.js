@@ -15,7 +15,7 @@ function CircularProgressWithLabel(props) {
         variant="determinate"
         {...props}
         size="10rem"
-        // color="secondary"
+        thickness="2"
       />
       <Box
         sx={{
@@ -28,10 +28,9 @@ function CircularProgressWithLabel(props) {
           alignItems: "center",
           justifyContent: "center",
           // size: "10rem",
-          thickness: "5",
         }}
       >
-        <Typography variant="caption" component="div" color="text.secondary">
+        <Typography variant="h5" component="div" color="#dad7cd">
           {`${Math.round(props.value)}%`}
         </Typography>
       </Box>
@@ -56,7 +55,7 @@ export default function CircularStatic() {
       setProgress((prevProgress) =>
         prevProgress >= 100 ? 0 : prevProgress + 10
       );
-    }, 50);
+    }, 100);
     return () => {
       clearInterval(timer);
     };
