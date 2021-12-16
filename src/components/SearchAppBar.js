@@ -80,8 +80,6 @@ export default function SearchAppBar({ query, setQuery }) {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              query={query}
-              setQuery={setQuery}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
               value={query}
