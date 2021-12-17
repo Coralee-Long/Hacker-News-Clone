@@ -17,7 +17,7 @@ const App = () => {
   const [news, setNews] = useState([]); // Set up "useState" for news
   const [page, setPage] = useState(1); // set up "useState" for page
   const [loading, setLoading] = useState(false); //set up spinner for "loading" page
-  const itemsPerPage = 7; //set how many items should be displayed per page
+  const itemsPerPage = 6; //set how many items should be displayed per page
   const [noOfPages, setNoOfPages] = useState(0); //set up "useState" for noOfPages
   const [query, setQuery] = useState(""); //set up "useState" for query
   const [search, setSearch] = useState("");

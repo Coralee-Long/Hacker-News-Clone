@@ -27,12 +27,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   card: {
-    padding: "15px",
+    padding: "10px",
     backgroundColor: "rgba(28, 29, 39, 1)",
   },
 
   cardStyling: {
-    padding: "20px 10px 15px 20px !important",
+    padding: "15px 10px 15px 20px !important",
   },
 
   cardMain: {
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   authorStyle: {
     color: "#f08080",
     paddingTop: "10px",
-    paddingBottom: "20px",
+    // paddingBottom: "10px",
   },
 
   timeStyle: {
@@ -110,7 +110,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     height: "100vh",
-    // marginTop: "40%",
   },
 
   spinnerColor: {
@@ -122,8 +121,8 @@ const useStyles = makeStyles((theme) => ({
     color: "#dad7cd",
     paddingRight: "8% !important",
     paddingLeft: "8% !important",
-    paddingTop: "15px",
-    paddingBottom: "15px",
+    paddingTop: "5px",
+    paddingBottom: "5px",
   },
 
   noRecordsContainer: {
